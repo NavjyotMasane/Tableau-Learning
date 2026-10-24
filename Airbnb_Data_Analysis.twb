@@ -618,6 +618,51 @@
     </datasource>
   </datasources>
   <worksheets>
+    <worksheet name='Airbnb Host Category Distributio'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontalignment='1' fontcolor='#000000' fontname='Benton Sans Book' fontsize='20'>Airbnb Host Category Record Count</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='AirBnB_NYC (airbnb)' name='federated.175y2510io2cac19na5tt1m0nuzm' />
+          </datasources>
+          <datasource-dependencies datasource='federated.175y2510io2cac19na5tt1m0nuzm'>
+            <column caption='Availability Status' datatype='string' name='[Calculation_0967347221037059]' role='dimension' type='nominal'>
+              <calculation class='tableau' formula='IF  [Host Since] &lt;= TODAY() THEN &quot;Active Host&quot;&#13;&#10;ELSE &quot;New Host&quot;&#13;&#10;END' />
+            </column>
+            <column datatype='date' hidden='true' name='[Host Since]' role='dimension' type='ordinal' />
+            <column datatype='integer' name='[Number of Records]' role='measure' type='quantitative' />
+            <column-instance column='[Number of Records]' derivation='Count' name='[cnt:Number of Records:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_0967347221037059]' derivation='None' name='[none:Calculation_0967347221037059:nk]' pivot='key' type='nominal' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+                <format attr='mark-labels-cull' value='true' />
+                <format attr='mark-color' value='#75a1c7' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.175y2510io2cac19na5tt1m0nuzm].[cnt:Number of Records:qk]</rows>
+        <cols>[federated.175y2510io2cac19na5tt1m0nuzm].[none:Calculation_0967347221037059:nk]</cols>
+      </table>
+      <simple-id uuid='{6139CD21-DCD6-4BAE-A84E-A75F25745CAC}' />
+    </worksheet>
     <worksheet name='Average Price By Room Type'>
       <table>
         <view>
@@ -1274,7 +1319,7 @@
       </viewpoint>
       <simple-id uuid='{76EA1E8E-BE29-4014-936F-2CCA6F9784EC}' />
     </window>
-    <window class='worksheet' maximized='true' name='Host Status Analysis'>
+    <window class='worksheet' name='Host Status Analysis'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -1311,8 +1356,115 @@
       </viewpoint>
       <simple-id uuid='{13752506-59D3-47CC-9FBE-0C1C976E9AA5}' />
     </window>
+    <window class='worksheet' maximized='true' name='Airbnb Host Category Distributio'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <viewpoint>
+        <zoom type='entire-view' />
+        <highlight>
+          <color-one-way>
+            <field>[federated.175y2510io2cac19na5tt1m0nuzm].[none:Calculation_0967347221037059:nk]</field>
+          </color-one-way>
+        </highlight>
+      </viewpoint>
+      <simple-id uuid='{88FBFA66-1228-4C7E-92E1-B455C3184D79}' />
+    </window>
   </windows>
   <thumbnails>
+    <thumbnail height='192' name='Airbnb Host Category Distributio' width='192'>
+      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
+    </thumbnail>
     <thumbnail height='192' name='Average Price By Room Type' width='192'>
       iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAACXBIWXMAABJ0AAASdAHeZh94
       AAANCUlEQVR4nO3dS29bZ37H8e85h/ebJIq6WY6dOLE7dmdWTdGmQAfFFA3QDtpZFOimQIFB
